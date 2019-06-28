@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143011271-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-143011271-1');
-</script>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -200,26 +190,16 @@
 
     
     <!-- Contact -->
-    <section class="tm-footer" id="contact">
-      <!-- Debut bloc de texte -->
-      <div id="col">
-      <!-- Debut colonnes -->
-              <ul>
-                  <li><strong>Qui sommes nous?</strong><br></br> 
-                    Nous sommes deux jeunes etuidiant voulant aider a develloper votre business
-                  
-                  </li>
-                  <li><strong>Contact</strong>
-                  </br>
-                  </br>
-                  E-mail: ramdanekarim1998@gmail.com
-                  telephone: 0601020304</li>
-                  
-                  
-              </ul>
-      <!-- Fin colonnes -->
+    <!--<section class="tm-footer" id="contact">
+      <div class="row">
+          <div class="tm-contact-form-container ml-auto mr-0">
+            <header>
+              <h2 class="tm-contact-header">Contactez-nous</h2>
+            </header>
+            
+          </div>
+        </div>
       </div>
-  <!-- Fin bloc de texte -->
     </section>
     <footer class="container tm-footer">
       <div class="row tm-footer-row">
@@ -227,6 +207,64 @@
           Copyright &copy; 2018 Media Management
           
         </p>
+
+      -->
+    <?php
+        if(isset($_POST['mailform']))
+      {
+	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message']))
+	{
+		$header="MIME-Version: 1.0\r\n";
+		$header.='From:"kram"<ramdanekarim1998@gmail.com>'."\n";
+		$header.='Content-Type:text/html; charset="uft-8"'."\n";
+		$header.='Content-Transfer-Encoding: 8bit';
+
+		$message='
+		<html>
+			<body>
+				<div align="center">
+        <img src="img/Logo.jpg"/>
+					<br />
+					<u>Nom de l\'expéditeur :</u>'.$_POST['nom'].'<br />
+					<u>Mail de l\'expéditeur :</u>'.$_POST['mail'].'<br />
+					<br />
+					'.nl2br($_POST['message']).'
+					<br />
+					<img src="img/Logo.jpg"/>
+				</div>
+			</body>
+		</html>
+		';
+
+		mail("ramdanekarim1998@gmail.com", "CONTACT - kram", $message, $header);
+		$msg="Votre message a bien été envoyé !";
+	}
+	else
+	{
+		$msg="Tous les champs doivent être complétés !";
+	}
+}
+?>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<h2>Formulaire de contact !</h2>
+		<form method="POST" action="">
+			<input type="text" name="nom" placeholder="Votre nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom']; } ?>" /><br /><br />
+			<input type="email" name="mail" placeholder="Votre email" value="<?php if(isset($_POST['mail'])) { echo $_POST['mail']; } ?>" /><br /><br />
+			<textarea name="message" placeholder="Votre message"><?php if(isset($_POST['message'])) { echo $_POST['message']; } ?></textarea><br /><br />
+			<input type="submit" value="Envoyer !" name="mailform"/>
+		</form>
+		<?php
+		if(isset($msg))
+		{
+			echo $msg;
+		}
+		?>
+	</body>
+</html>
         <div class="col-md-2 col-sm-12 scrolltop">
           <div class="scroll icon"><i class="fa fa-4x fa-angle-up"></i></div>
         </div>
@@ -388,3 +426,4 @@
     </script>
   </body>
 </html>
+
