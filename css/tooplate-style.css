@@ -356,9 +356,6 @@ p:last-child {
   padding-bottom: 90px;
 }
 
-.tm-contact-left {
-  margin-bottom: 30px;
-}
 
 .tm-contact-figure-block {
   display: -webkit-box;
@@ -367,6 +364,7 @@ p:last-child {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
+  align-content: center;
 }
 
 figure {
@@ -382,9 +380,28 @@ figure {
   max-width: 462px;
   text-align: center;
 }
+#col{
+  display:block; position:relative;
+  width:900px;
+  height:200px;
+  text-align: center;
+  margin: auto;
+}
+#col ul{
+  display: inline-block;
+  width: 100%;
+  padding:10px
+}
+#col ul li{
+  display: inline-block;
+  width: 30% ;
+  margin-left: 1%;
+  margin-right: 1%;
+}
 
 .tm-contact-header {
   margin-bottom: 40px;
+  background-color: #313131;
 }
 
 .form-control {
@@ -395,6 +412,8 @@ figure {
 
 .tm-footer {
   margin-bottom: 40px;
+  position: relative;
+  
 }
 
 .tm-footer-row {
@@ -481,6 +500,10 @@ figure {
     -ms-flex: 0 0 68%;
     flex: 0 0 68%;
     max-width: 870px;
+  }
+
+  .footer-section{
+    position: absolute;
   }
 
   .tm-company-right {
