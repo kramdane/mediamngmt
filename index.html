@@ -190,7 +190,7 @@
 
     
     <!-- Contact -->
-    <!--<section class="tm-footer" id="contact">
+    <section class="tm-footer" id="contact">
       <div class="row">
           <div class="tm-contact-form-container ml-auto mr-0">
             <header>
@@ -208,63 +208,8 @@
           
         </p>
 
-      -->
-    <?php
-        if(isset($_POST['mailform']))
-      {
-	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message']))
-	{
-		$header="MIME-Version: 1.0\r\n";
-		$header.='From:"kram"<ramdanekarim1998@gmail.com>'."\n";
-		$header.='Content-Type:text/html; charset="uft-8"'."\n";
-		$header.='Content-Transfer-Encoding: 8bit';
-
-		$message='
-		<html>
-			<body>
-				<div align="center">
-        <img src="img/Logo.jpg"/>
-					<br />
-					<u>Nom de l\'expéditeur :</u>'.$_POST['nom'].'<br />
-					<u>Mail de l\'expéditeur :</u>'.$_POST['mail'].'<br />
-					<br />
-					'.nl2br($_POST['message']).'
-					<br />
-					<img src="img/Logo.jpg"/>
-				</div>
-			</body>
-		</html>
-		';
-
-		mail("ramdanekarim1998@gmail.com", "CONTACT - kram", $message, $header);
-		$msg="Votre message a bien été envoyé !";
-	}
-	else
-	{
-		$msg="Tous les champs doivent être complétés !";
-	}
-}
-?>
-<html>
-	<head>
-		<meta charset="utf-8" />
-	</head>
-	<body>
-		<h2>Formulaire de contact !</h2>
-		<form method="POST" action="">
-			<input type="text" name="nom" placeholder="Votre nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom']; } ?>" /><br /><br />
-			<input type="email" name="mail" placeholder="Votre email" value="<?php if(isset($_POST['mail'])) { echo $_POST['mail']; } ?>" /><br /><br />
-			<textarea name="message" placeholder="Votre message"><?php if(isset($_POST['message'])) { echo $_POST['message']; } ?></textarea><br /><br />
-			<input type="submit" value="Envoyer !" name="mailform"/>
-		</form>
-		<?php
-		if(isset($msg))
-		{
-			echo $msg;
-		}
-		?>
-	</body>
-</html>
+      
+    
         <div class="col-md-2 col-sm-12 scrolltop">
           <div class="scroll icon"><i class="fa fa-4x fa-angle-up"></i></div>
         </div>
@@ -384,32 +329,7 @@
           }
         });
 
-        videoSec = $("#tmVideoSection");
-
-        // Adjust height of video when window is resized
-        $(window).resize(function() {
-          setVideoHeight();
-        });
-
-        setVideoHeight();
-
-        $(window).on("load scroll resize", function() {
-          var scrolled = $(this).scrollTop();
-          var vidHeight = $("#hero-vid").height();
-          var offset = vidHeight * 0.6;
-          var scrollSpeed = 0.25;
-          var windowWidth = window.innerWidth;
-
-          if (windowWidth < 768) {
-            scrollSpeed = 0.1;
-            offset = vidHeight * 0.5;
-          }
-
-          $("#hero-vid").css(
-            "transform",
-            "translate3d(-50%, " + -(offset + scrolled * scrollSpeed) + "px, 0)"
-          ); // parallax (25% scroll rate)
-        });
+       
 
         // Parallax image background
         background_image_parallax($(".tm-parallax"), 0.4);
